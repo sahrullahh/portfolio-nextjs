@@ -1,0 +1,84 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import { Homes } from "../../@types/portos";
+import WordRotate from "@/components/ui/word-rotate";
+import { Icon } from "@iconify-icon/react";
+import Tilt from "react-parallax-tilt";
+
+const Home: React.FC<Homes> = ({
+  greeting,
+  name,
+  passion,
+  description,
+  sm,
+}) => {
+  return (
+    <div className="flex md:flex-row flex-col lg:h-[80vh] pb-32 lg:mt-0 mt-8 lg:gap-52 gap-20 items-center justify-center">
+      <div className="space-y-5 md:order-1 order-2">
+        <div className="flex gap-2 items-center">
+          <Icon
+            icon="mdi:leaf"
+            className="lg:text-lg text-sm text-green-500"
+          />
+          <p className="lg:text-lg text-sm text-neutral-300 font-outfit">
+            Available for freelance work
+          </p>
+        </div>
+        <div className="font-archiabold text-neutral-300">
+          <h1 className="lg:text-6xl text-4xl tracking-tighter">{greeting}</h1>
+          <h1 className="lg:text-6xl text-4xl tracking-tighter">{name},</h1>
+          <h1 className="lg:text-6xl text-4xl tracking-tighter flex gap-2 items-center">
+            a{" "}
+            <WordRotate
+              words={passion}
+              duration={3500}
+            />
+          </h1>
+        </div>
+        <div className="sub-heading">
+          <p className="lg:text-2xl text-lg font-outfit max-w-2xl text-col-secondary-font">
+            {description}
+          </p>
+        </div>
+        <div className="button-wrapping space-x-5 font-outfit">
+          <ul className="flex gap-5 text-2xl text-col-primary-font">
+            {sm.map((item, i) => (
+              <li key={i}>
+                <Link
+                  href={item.link}
+                  target="_blank"
+                >
+                  <Icon icon={item.icon} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div className="md:order-2 order-1">
+        <Tilt
+          tiltReverse={true}
+          scale={1}
+          className="relative group"
+        >
+          <div className="transform-perserve-3d relative  bg-gradient-to-b from-green-500 via-green-600 to-transparent rounded-md hover:shadow-sm cursor-pointer active:scale-95 transition-all">
+            <img
+              src="./image/man.png"
+              alt=""
+              className="md:max-w-[400px] grayscale  w-full max-w-[300px] object-cover contrast-100 scale-100 transform-perserve-3d group-hover:parallax-image"
+            />
+          </div>
+          <img
+            src="./image/thatme.svg"
+            alt=""
+            className="absolute transform-perserve-3d -bottom-8 -left-20"
+          />
+        </Tilt>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
