@@ -1,7 +1,30 @@
-import React from "react";
-import { Icon } from "@iconify/react";
+"use client";
+import React, { useState, useEffect } from "react";
 import NumberTicker from "@/components/ui/number-ticker";
+import fetch from "@/app/utils/axios";
+import Markdown from "markdown-to-jsx";
+
 export default function about() {
+  const [data, setData] = useState({
+    description: "",
+  });
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch.get("/profile");
+
+      const { data } = response.data;
+
+      setData(data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <React.Fragment>
       <div className="relative flex flex-col gap-20 pb-8 ">
@@ -14,12 +37,9 @@ export default function about() {
               About Myself
             </h1>
           </div>
-          <p className="text-lg text-col-secondary-font">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
-            incidunt optio ipsam nam, ut nihil aliquid, minima illo dolor ex
-            ducimus qui, provident blanditiis et culpa minus reprehenderit
-            tempore autem.
-          </p>
+          <Markdown className="text-lg text-col-secondary-font">
+            {data.description ?? "No about."}
+          </Markdown>
           <div className="flex flex-col md:flex-row justify-start gap-5">
             <div className="space-y-3">
               <h2 className="text-4xl font-archiabold">

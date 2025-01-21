@@ -1,9 +1,10 @@
 // this is the root layout, you can change fontFamily globally here.
 
-import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
 import Navbar from "@/app/components/Navbar";
+import Footer from "@/app/components/Footer";
+import type { Metadata } from "next";
+import "./globals.css";
 
 const outfit = localFont({
   src: "../public/fonts/Outfit-Regular.ttf",
@@ -28,32 +29,55 @@ export default function RootLayout({
   const menu = [
     {
       name: "Home",
-      link: "/",
+      offsetY: 0,
     },
     {
       name: "About",
-      link: "/about",
+      offsetY: 600,
     },
     {
       name: "Experience",
-      link: "/experience",
+      offsetY: 1600,
     },
     {
       name: "Projects",
-      link: "/project",
+      offsetY: 2400,
     },
   ];
 
   return (
     <html lang="en">
-      <body className={`${outfit.variable} ${ArchiaBold.variable}`}>
+      <body
+        className={`${outfit.variable} ${ArchiaBold.variable}`}
+        suppressHydrationWarning
+      >
         <Navbar
           title="Mohammad Sahrullah."
-          frontLogo="./image/Ms-solid.png"
-          backLogo="./image/me-small.png"
+          frontLogo="/image/Ms-solid.png"
+          backLogo="/image/me-small.png"
           data={menu}
         />
-        <div className="container mx-auto ">{children}</div>
+        <div className="">{children}</div>
+        <Footer
+          sm={[
+            {
+              icon: "mdi:github",
+              link: "https://github.com/mohammad-sahrullah",
+            },
+            {
+              icon: "mdi:linkedin",
+              link: "https://www.linkedin.com/in/mohammad-sahrullah/",
+            },
+            {
+              icon: "mdi:instagram",
+              link: "https://www.instagram.com/mohammad_sahrullah/",
+            },
+            {
+              icon: "mdi:gmail",
+              link: "https://www.facebook.com/mohammad.sahrullah.9/",
+            },
+          ]}
+        />
       </body>
     </html>
   );

@@ -1,14 +1,13 @@
-import React from "react";
 import Home from "./layouts/home";
 import About from "./layouts/home/about";
 import Featured from "./layouts/home/featured";
 import Summaries from "./layouts/home/summaries";
 import Tools from "./layouts/home/tools";
 import Achievement from "./layouts/home/achievement";
-import Contact from "./layouts/home/contact";
+
 export default function page() {
   return (
-    <div className="flex flex-col gap-20">
+    <div className="container mx-auto flex flex-col gap-20">
       <Home
         greeting="Hello, I`m"
         name="Ibnu Batutah"
@@ -16,7 +15,10 @@ export default function page() {
         description="I'm a passionate front-end web engineer focused on building
             beautiful interfaces."
         sm={[
-          { icon: "mdi:github", link: "https://github.com/mohammad-sahrullah" },
+          {
+            icon: "mdi:github",
+            link: "https://github.com/mohammad-sahrullah",
+          },
           {
             icon: "mdi:linkedin",
             link: "https://www.linkedin.com/in/mohammad-sahrullah/",
@@ -33,10 +35,9 @@ export default function page() {
       />
       <About />
       <Summaries />
+      <Featured />
       <Achievement />
       <Tools />
-      <Featured />
-      <Contact />
     </div>
   );
 }

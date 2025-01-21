@@ -1,55 +1,40 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
+import fetch from "@/app/utils/axios";
+import { Tool } from "@/app/types/portos";
+import { config } from "@/app/utils/config";
 
 export default function tools() {
-  const tools = [
-    {
-      name: "Javascript",
-      icon: "./image/tools/js.png",
-    },
-    {
-      name: "Vue",
-      icon: "./image/tools/vue.png",
-    },
-    {
-      name: "Nuxt",
-      icon: "./image/tools/nuxt.svg",
-    },
-    {
-      name: "React",
-      icon: "./image/tools/react.svg",
-    },
-    {
-      name: "Next",
-      icon: "./image/tools/next.svg",
-    },
-    {
-      name: "Tailwind",
-      icon: "./image/tools/tailwind.svg",
-    },
-    {
-      name: "Figma",
-      icon: "./image/tools/figma.png",
-    },
-    {
-      name: "VS Code",
-      icon: "./image/tools/vscode.png",
-    },
-    {
-      name: "Typescript",
-      icon: "./image/tools/ts.png",
-    },
-  ];
+  const [tools, setTools] = useState<Tool[]>([]);
+
+  const fetchData = async () => {
+    try {
+      const res = await fetch.get("/skill");
+      const { data } = res.data;
+      console.log(data);
+      setTools(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div className="space-y-8 pb-16 text-center">
       <h2 className="text-4xl font-archiabold tracking-tighter">
         Tools and Skills
       </h2>
-      <div className="lg:flex grid md:grid-cols-3 grid-cols-2 gap-20 items-center justify-center">
-        {tools.map((tool) => (
-          <div className="space-y-3">
+      <div className="lg:flex grid md:grid-cols-3 grid-cols-2 gap-10 p-5 items-center justify-center">
+        {tools.map((tool: Tool, i: number) => (
+          <div
+            className="space-y-3"
+            key={i}
+          >
             <img
-              src={tool.icon}
+              src={config.BASE_URL_IMAGE + tool.image}
               alt={tool.name}
               className="max-w-[70px] max-h-[70px] mx-auto"
             />

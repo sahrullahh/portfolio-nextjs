@@ -1,22 +1,44 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Projects } from "@/app/@types/portos";
-import Card from "@/app/components/summaries/card";
+import Link from "next/link";
+import { Projects, Tags } from "@/app/types/portos";
 import fetch from "@/app/utils/axios";
-export default function feature() {
+import Card from "@/app/components/project/card";
+import { useRouter } from "next/navigation";
+
+export default function Feature() {
   const [projects, setProjects] = useState<Projects[]>([]);
+  const [tags, setTags] = useState<Tags[]>([]);
+
+  const router = useRouter();
 
   const fetchData = async () => {
     try {
       const response = await fetch.get("/portofolio");
-      console.log(response.data);
+      const { data } = response.data;
+      setProjects(data);
     } catch (error) {
       console.error(error);
     }
   };
 
+  const getTags = async () => {
+    try {
+      const response = await fetch.get("/skill");
+      const { data } = response.data;
+      setTags(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const navigateToId = (slug: string) => {
+    router.replace(`/project/${slug}`);
+  };
+
   useEffect(() => {
     fetchData();
+    getTags();
   }, []);
 
   return (
@@ -24,22 +46,35 @@ export default function feature() {
       <h2 className="text-4xl font-archiabold tracking-tighter">
         Featured Projects
       </h2>
-      <div className="grid gap-5 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
-        {/* {projects.map((item, i) => (
-          <Card
-            key={i}
-            title={item.title}
-            description={item.description}
-            image={item.image}
-            tags={item.tags}
-          />
-        ))} */}
+      <div className="grid gap-5 lg:grid-cols-4 md:grid-cols-2 justify-center grid-cols-1">
+        {projects && projects.length > 0 ? (
+          projects.slice(0, 4).map((item: Projects, i: number) => (
+            <Card
+              order={i}
+              key={`index-porject-${i}`}
+              handler={() => navigateToId(item.slug)}
+              thumbnail={item.thumbnail[0]}
+              tags={tags}
+              activeTags={item.tag}
+              title={item.title}
+            />
+          ))
+        ) : (
+          <div className="p-4 border-2 border-neutral-700 border-dashed font-outfit">
+            <h2>No projects to show.</h2>
+          </div>
+        )}
       </div>
-      <div className="flex justify-center pt-8">
-        <button className="px-5 py-3 bg-green-500 font-outfit text-black rounded-md font-bold">
-          <span>View All Projects</span>
-        </button>
-      </div>
+      {projects && projects.length > 4 && (
+        <div className="flex justify-center pt-8">
+          <Link
+            href="/project"
+            className="px-5 py-3 bg-neutral-800 font-outfit hover:bg-neutral-700 text-neutral-300 rounded-md font-bold"
+          >
+            <span>View All Projects</span>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

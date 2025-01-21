@@ -1,11 +1,15 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import Link from "next/link";
-import { Navbars } from "../@types/portos";
+import Image from "next/image";
+import { useRouter, usePathname } from "next/navigation";
+import { Navbars } from "../types/portos";
 import { Icon } from "@iconify/react";
 
 const Navbar: React.FC<Navbars> = ({ data, frontLogo, backLogo, title }) => {
+  const router = useRouter();
+  const pathname = usePathname();
+
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const toggleMenu = () => {
@@ -18,10 +22,20 @@ const Navbar: React.FC<Navbars> = ({ data, frontLogo, backLogo, title }) => {
     }
   };
 
+  const navigateTo = (offsetY: number) => {
+    setTimeout(() => {
+      window.scrollTo({
+        top: offsetY,
+        behavior: "smooth",
+      });
+    }, 500);
+    if (pathname !== "/") {
+      router.push("/");
+    }
+  };
+
   useEffect(() => {
     document.addEventListener("mousedown", outSideMenu);
-
-    // Membersihkan event listener saat komponen di-unmount
     return () => {
       document.removeEventListener("mousedown", outSideMenu);
     };
@@ -32,14 +46,19 @@ const Navbar: React.FC<Navbars> = ({ data, frontLogo, backLogo, title }) => {
       <nav className="lg:p-8 p-5">
         <div className="md:container mx-auto flex justify-between items-center">
           <div>
-            <div className="flex gap-5 items-center">
+            <div
+              className="flex gap-5 items-center cursor-pointer"
+              onClick={() => router.push("/")}
+            >
               <div className="head-logos">
                 {/*  flip-image-animations is custom css class see in globals.css */}
                 <div className="flip">
                   <div className="front">
                     {frontLogo && (
-                      <img
+                      <Image
                         className="w-10"
+                        width={50}
+                        height={50}
                         src={frontLogo}
                         alt="front logo"
                       />
@@ -47,8 +66,10 @@ const Navbar: React.FC<Navbars> = ({ data, frontLogo, backLogo, title }) => {
                   </div>
                   <div className="back">
                     {backLogo && (
-                      <img
+                      <Image
                         className="w-10"
+                        width={50}
+                        height={50}
                         src={backLogo}
                         alt="back logo"
                       />
@@ -71,12 +92,15 @@ const Navbar: React.FC<Navbars> = ({ data, frontLogo, backLogo, title }) => {
               {data &&
                 data.map((item) => (
                   <li key={item.name}>
-                    <Link
-                      className="navbar-item w-full"
-                      href={item.link}
+                    <button
+                      className="navbar-item font-outfit"
+                      onClick={() => {
+                        navigateTo(item.offsetY);
+                        setIsOpen(false);
+                      }}
                     >
                       {item.name}
-                    </Link>
+                    </button>
                   </li>
                 ))}
             </ul>

@@ -1,11 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Homes } from "../../@types/portos";
+import { Homes } from "../../types/portos";
 import WordRotate from "@/components/ui/word-rotate";
 import { Icon } from "@iconify-icon/react";
 import Tilt from "react-parallax-tilt";
+import fetch from "@/app/utils/axios";
+import { config } from "@/app/utils/config";
 
 const Home: React.FC<Homes> = ({
   greeting,
@@ -14,6 +16,27 @@ const Home: React.FC<Homes> = ({
   description,
   sm,
 }) => {
+  const [data, setData] = useState({
+    name: "",
+    image: "",
+  });
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch.get("/profile");
+
+      const { data } = response.data;
+
+      setData(data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className="flex md:flex-row flex-col lg:h-[80vh] pb-32 lg:mt-0 mt-8 lg:gap-52 gap-20 items-center justify-center">
       <div className="space-y-5 md:order-1 order-2">
@@ -28,7 +51,9 @@ const Home: React.FC<Homes> = ({
         </div>
         <div className="font-archiabold text-neutral-300">
           <h1 className="lg:text-6xl text-4xl tracking-tighter">{greeting}</h1>
-          <h1 className="lg:text-6xl text-4xl tracking-tighter">{name},</h1>
+          <h1 className="lg:text-6xl text-4xl tracking-tighter">
+            {data.name ?? "Mohammad Sahrullah"},
+          </h1>
           <h1 className="lg:text-6xl text-4xl tracking-tighter flex gap-2 items-center">
             a{" "}
             <WordRotate
@@ -61,13 +86,16 @@ const Home: React.FC<Homes> = ({
         <Tilt
           tiltReverse={true}
           scale={1}
+          glarePosition="all"
+          gyroscope={true}
+          glareEnable={true}
           className="relative group"
         >
-          <div className="transform-perserve-3d relative  bg-gradient-to-b from-green-500 via-green-600 to-transparent rounded-md hover:shadow-sm cursor-pointer active:scale-95 transition-all">
+          <div className="transform-perserve-3d relative before:absolute before:md:w-[300px] before:w-[300px] before:h-[400px] before:lg:h-[500px] before:lg:w-[400px]  before:-top-6 before:-left-8 before:bg-transparent before:border-2 before:transform before:translate before:border-green-500  bg-gradient-to-b from-green-500 via-green-600 to-transparent rounded-md hover:shadow-sm cursor-pointer active:scale-95 transition-all">
             <img
-              src="./image/man.png"
+              src={data.image ? config.BASE_URL_IMAGE + data.image : ""}
               alt=""
-              className="md:max-w-[400px] grayscale  w-full max-w-[300px] object-cover contrast-100 scale-100 transform-perserve-3d group-hover:parallax-image"
+              className=" md:max-w-[400px] w-full max-w-[300px] object-cover contrast-100 scale-100 transform-perserve-3d group-hover:parallax-image"
             />
           </div>
           <img
