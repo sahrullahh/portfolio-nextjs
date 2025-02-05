@@ -52,9 +52,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <Navbar
-          title="Mohammad Sahrullah."
-          frontLogo="/image/Ms-solid.png"
-          backLogo="/image/me-small.png"
+          title="Ibnu batutah."
           data={menu}
         />
         <div className="">{children}</div>

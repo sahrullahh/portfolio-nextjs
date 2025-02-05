@@ -42,7 +42,7 @@ const Navbar: React.FC<Navbars> = ({ data, frontLogo, backLogo, title }) => {
   }, []);
 
   return (
-    <div className="font-outfit navbar sticky top-0 z-50 w-full bg-gradient-to-b from-[#121212] via-[#121212]/50 to-transparent">
+    <div className="font-outfit navbar sticky top-0 z-50 w-full bg-gradient-to-b from-[#121212] via-[#121212]/80 to-transparent">
       <nav className="lg:p-8 p-5">
         <div className="md:container mx-auto flex justify-between items-center">
           <div>
@@ -78,7 +78,7 @@ const Navbar: React.FC<Navbars> = ({ data, frontLogo, backLogo, title }) => {
                 </div>
               </div>
               <div className="head-title">
-                <strong className="text-lg lg:block hidden">{title}</strong>
+                <strong className="text-2xl lg:block hidden">{title}</strong>
               </div>
             </div>
           </div>
