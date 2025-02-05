@@ -11,6 +11,7 @@ export default function page() {
       <Home
         greeting="Hello, I`m"
         name="Ibnu Batutah"
+        image="./image/man.png"
         passion={["Mobile Developer", "Backend Developer", "Android Developer"]}
         description="I'm a passionate front-end web engineer focused on building
             beautiful interfaces."

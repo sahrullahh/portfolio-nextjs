@@ -17,7 +17,7 @@ export default function card({
   thumbnail: string[] | string;
   title: string;
   category?: string;
-  tags?: Tags[];
+  tags?: string[];
   key: string;
   order: number;
   activeTags?: string[];
@@ -27,7 +27,7 @@ export default function card({
       <div className="relative overflow-hidden ">
         <img
           className="w-full transform group-hover:scale-110 transition-all duration-500 "
-          src={config.BASE_URL_IMAGE + thumbnail}
+          src={"./image/project/" + thumbnail}
         />
         <div
           onClick={handler}
@@ -53,16 +53,14 @@ export default function card({
         <div className="flex pb-3  gap-2 font-outfit ">
           <span className="text-neutral-300">{category}</span>
           {tags && tags.length > 0 ? (
-            tags
-              .filter((tag) => activeTags?.includes(tag.id.toString()))
-              .map((item: Tags, i: number) => (
-                <span
-                  key={i}
-                  className="text-center px-3 py-1 bg-neutral-800 rounded-md"
-                >
-                  {item.name}
-                </span>
-              ))
+            tags.map((item: string, i: number) => (
+              <span
+                key={i}
+                className="text-center px-3 py-1 bg-neutral-800 rounded-md"
+              >
+                {item}
+              </span>
+            ))
           ) : (
             <span className="text-neutral-300">No tags</span>
           )}

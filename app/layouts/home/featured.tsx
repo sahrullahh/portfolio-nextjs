@@ -2,33 +2,21 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Projects, Tags } from "@/app/types/portos";
-import fetch from "@/app/utils/axios";
 import Card from "@/app/components/project/card";
 import { useRouter } from "next/navigation";
+import fetch from "@/app/utils/axios";
 
 export default function Feature() {
   const [projects, setProjects] = useState<Projects[]>([]);
-  const [tags, setTags] = useState<Tags[]>([]);
 
   const router = useRouter();
 
-  const fetchData = async () => {
+  const fetchAll = async () => {
     try {
-      const response = await fetch.get("/portofolio");
-      const { data } = response.data;
-      setProjects(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const getTags = async () => {
-    try {
-      const response = await fetch.get("/skill");
-      const { data } = response.data;
-      setTags(data);
-    } catch (error) {
-      console.error(error);
+      const response = await fetch.get("project.json");
+      setProjects(response.data);
+    } catch (e) {
+      console.error(e);
     }
   };
 
@@ -37,9 +25,8 @@ export default function Feature() {
   };
 
   useEffect(() => {
-    fetchData();
-    getTags();
-  }, []);
+    fetchAll();
+  });
 
   return (
     <div className="space-y-8 pb-16">
@@ -54,8 +41,7 @@ export default function Feature() {
               key={`index-porject-${i}`}
               handler={() => navigateToId(item.slug)}
               thumbnail={item.thumbnail[0]}
-              tags={tags}
-              activeTags={item.tag}
+              tags={item.tag}
               title={item.title}
             />
           ))

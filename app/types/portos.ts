@@ -1,7 +1,5 @@
 // this for declaring any type of variable, NOTE: this is good for practices and avoid using the word "any" in entire variable.
 
-import { Url } from "next/dist/shared/lib/router/router";
-
 export type Menu = {
   name: string;
   offsetY: number;
@@ -27,7 +25,7 @@ export type Metadata = {
 export type Education = {
   name: string;
   major: string;
-  gpa: string;
+  gpa?: string;
   time: string;
   image: string;
 };
@@ -47,11 +45,10 @@ export type Achievements = {
 };
 
 export type Experience = {
-  company: string;
-  start_date: Date;
-  end_date: Date;
+  name: string;
+  time: string;
   position: string;
-  category: string;
+  type: string;
   description: string;
 };
 
@@ -64,10 +61,12 @@ export type Homes = {
   name: string;
   passion: Array<string>;
   description: string;
+  image: string;
   sm: SocialMedia[];
 };
 
 export type Projects = {
+  content: any;
   id: number;
   title: string;
   description: string;
@@ -86,7 +85,6 @@ export type Tags = {
 };
 
 export type Tool = {
-  id: number;
   name: string;
-  image?: string;
+  icon?: string;
 };

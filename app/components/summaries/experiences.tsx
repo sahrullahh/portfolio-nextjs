@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import { Experiences, Experience } from "@/app/types/portos";
-import { formatToMonthAndYear } from "@/app/utils/days";
 
 export default function experiences({ data }: Experiences) {
   const [showMore, setShowMore] = useState(false);
@@ -44,18 +43,14 @@ export default function experiences({ data }: Experiences) {
               >
                 <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white z-20 dark:border-gray-900 dark:bg-gray-700"></div>
                 <time className="mb-2 text-lg font-bold font-outfit">
-                  {formatToMonthAndYear({ date: item.start_date })} -{" "}
-                  {formatToMonthAndYear({ date: item.end_date }) ===
-                  "Invalid Date"
-                    ? "Present"
-                    : formatToMonthAndYear({ date: item.end_date })}
+                  {item.time}
                 </time>
                 <h3 className="mb-2 text-2xl font-semibold font-archiabold tracking-tighter text-neutral-400">
-                  {item.company}
+                  {item.name}
                 </h3>
                 <h3 className="mb-4 text-lg font-semibold text-col-secondary-font">
                   {item.position} -{" "}
-                  <span className="lowercase"> ({item.category})</span>
+                  <span className="lowercase"> ({item.type})</span>
                 </h3>
                 <p className="mb-4 text-lg font-normal font-outfit text-col-secondary-font">
                   {item.description}

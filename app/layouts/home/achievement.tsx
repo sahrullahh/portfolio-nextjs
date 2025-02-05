@@ -4,9 +4,8 @@ import React, { useState, useEffect, useRef } from "react";
 import fetch from "@/app/utils/axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { config } from "@/app/utils/config";
 import "swiper/css";
-
+ 
 export default function Achievement() {
   const [certif, setCertif] = useState([]);
   const [awards, setAwards] = useState([]);
@@ -19,15 +18,14 @@ export default function Achievement() {
 
   const fetchData = async () => {
     try {
-      const res = await fetch.get("/archivement");
-      const { data } = res.data;
+      const res = await fetch.get("certificates.json");
 
-      const filteredCertif = data.filter(
-        (item: any) => item.category === "CERTIFICATES"
+      const filteredCertif = res.data.filter(
+        (item: any) => item.category === "certif"
       );
 
-      const filteredAwards = data.filter(
-        (item: any) => item.category === "AWARDS"
+      const filteredAwards = res.data.filter(
+        (item: any) => item.category === "awards"
       );
 
       setCertif(filteredCertif);
@@ -122,9 +120,10 @@ export default function Achievement() {
                     <div className="relative overflow-hidden ">
                       <img
                         className="w-full transform group-hover:scale-110 transition-all duration-500 "
-                        src={config.BASE_URL_IMAGE + item.image}
+                        src={"./image/certifications/" + item.image}
                         alt={item.title}
                       />
+
                       <div className="group-hover:opacity-100 opacity-0 transition-all duration-300 p-5 bg-neutral-800 bg-opacity-90 absolute inset-0 flex items-center justify-center">
                         <h2 className="font-archiabold tracking-tighter transition-all transform translate-y-8 group-hover:translate-y-0">
                           {item.title}
@@ -147,10 +146,7 @@ export default function Achievement() {
           )}
 
           <div className={`${showCertifBtn} justify-center gap-5 relative`}>
-            <button
-              ref={prevCertifRef}
-              className="px-5 py-3 bg-neutral-800 font-outfit text-2xl hover:bg-neutral-700 text-neutral-300 rounded-md font-bold"
-            >
+            <button className="px-5 py-3 bg-neutral-800 font-outfit text-2xl hover:bg-neutral-700 text-neutral-300 rounded-md font-bold">
               <span>
                 <Icon icon="lucide:arrow-left" />
               </span>
@@ -198,7 +194,7 @@ export default function Achievement() {
                     <div className="relative overflow-hidden ">
                       <img
                         className="w-full transform group-hover:scale-110 transition-all  duration-500 "
-                        src={config.BASE_URL_IMAGE + item.image}
+                        src={"./image/awards/" + item.image}
                         alt={item.title}
                       />
                       <div className="group-hover:opacity-100 opacity-0 transition-all duration-300 p-5 bg-neutral-800 bg-opacity-90 absolute inset-0 flex items-center justify-center">

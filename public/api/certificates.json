@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Dicoding Menjadi Android Experts",
+    "category": "certif",
+    "image": "cert-android-expert.png"
+  },
+  {
+    "title": "Dicoding Android Fundamental",
+    "category": "certif",
+    "image": "cert-android-fundamental.png"
+  },
+  {
+    "title": "Dicoding Android Intermidiete",
+    "category": "certif",
+    "image": "cert-android-intermediate.png"
+  },
+  {
+    "title": "Dicoding Android Jetpack Compose",
+    "category": "certif",
+    "image": "cert-android-jetpack-compose.png"
+  },
+  {
+    "title": "Dicoding Android Pemula",
+    "category": "certif",
+    "image": "cert-android-pemula.png"
+  },
+  {
+    "title": "Award KMPIN",
+    "category": "awards",
+    "image": "award-kmipn.png"
+  },
+  {
+    "title": "Award Mantee 2023",
+    "category": "awards",
+    "image": "award-mentee-2023.png"
+  },
+  {
+    "title": "Award Mentor 2024",
+    "category": "awards",
+    "image": "award-mentor-2024-1.png"
+  },
+  {
+    "title": "Award Polije",
+    "category": "awards",
+    "image": "award-polije-5-4-crop.png"
+  }
+]

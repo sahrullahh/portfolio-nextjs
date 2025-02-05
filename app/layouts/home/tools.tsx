@@ -9,10 +9,8 @@ export default function tools() {
 
   const fetchData = async () => {
     try {
-      const res = await fetch.get("/skill");
-      const { data } = res.data;
-      console.log(data);
-      setTools(data);
+      const res = await fetch.get("tools.json");
+      setTools(res.data);
     } catch (error) {
       console.log(error);
     }
@@ -34,7 +32,7 @@ export default function tools() {
             key={i}
           >
             <img
-              src={config.BASE_URL_IMAGE + tool.image}
+              src={"./image/tools/" + tool.icon}
               alt={tool.name}
               className="max-w-[70px] max-h-[70px] mx-auto"
             />
