@@ -70,11 +70,18 @@ const Home: React.FC<Homes> = ({
           className="relative group"
         >
           <div className="transform-perserve-3d relative before:absolute before:md:w-[300px] before:w-[300px] before:h-[400px] before:lg:h-[500px] before:lg:w-[400px]  before:-top-6 before:-left-8 before:bg-transparent before:border-2 before:transform before:translate before:border-green-500  bg-gradient-to-b from-green-500 via-green-600 to-transparent rounded-md hover:shadow-sm cursor-pointer active:scale-95 transition-all">
-            <img
-              src="./image/profile/DCA Logo.png"
-              alt=""
-              className="absolute group-hover:scale-110 transition-all contrast-100 brightness-100 z-40 bottom-0 shadow -right-20 max-w-[200px]"
-            />
+            <div className="absolute -right-20 -bottom-20 z-40">
+              <div className="relative">
+                <img
+                  src="./image/profile/DCA Logo.png"
+                  alt=""
+                  className=" group-hover:scale-110 transition-all contrast-100 brightness-100 z-40  shadow max-w-[200px]"
+                />
+                <span className="px-3 py-1  text-green-500 bg-green-500/10 tracking-wide border border-green-500 ml-12  font-bold rounded-md font-outfit">
+                  Certified
+                </span>
+              </div>
+            </div>
             <img
               src={image ? image : "https://via.placeholder.com/300"}
               alt=""

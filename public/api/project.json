@@ -146,5 +146,25 @@
     ],
     "category": "Mobile",
     "tag": ["Flutter", "Android", "iOS"]
+  },
+  {
+    "id": 8,
+    "title": "Sumbangin aja",
+    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum, eum. Voluptatibus voluptas incidunt quod facilis inventore. Tempore, dolores dignissimos? Sit!",
+    "thumbnail": [
+      "sumbanginaja/cover.webp",
+      "sumbanginaja/app_1.webp",
+      "sumbanginaja/app_2.webp"
+    ],
+    "slug": "sumbangin-aja",
+    "repository": "https://github.com",
+    "website": [
+      {
+        "appstore": "",
+        "googleplay": ""
+      }
+    ],
+    "category": "Backend",
+    "tag": ["NestJs", "Android", "iOS"]
   }
 ]
