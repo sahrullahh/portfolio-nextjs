@@ -84,7 +84,7 @@ export default function Achievement() {
               <Icon icon="lucide:x" />
             </button>
           </div>
-          <div className="grid grid-cols-1 justify-center  gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 justify-center gap-6">
             <div>
               <img
                 src={`./image/${
@@ -96,7 +96,7 @@ export default function Achievement() {
                 className="w-full rounded-lg"
               />
             </div>
-            <div className="flex flex-row justify-start">
+            <div className="flex flex-row justify-start font-outfit">
               <p className="text-col-white">{selectedItem?.description}</p>
             </div>
           </div>
