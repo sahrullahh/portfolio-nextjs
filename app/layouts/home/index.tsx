@@ -71,9 +71,14 @@ const Home: React.FC<Homes> = ({
         >
           <div className="transform-perserve-3d relative before:absolute before:md:w-[300px] before:w-[300px] before:h-[400px] before:lg:h-[500px] before:lg:w-[400px]  before:-top-6 before:-left-8 before:bg-transparent before:border-2 before:transform before:translate before:border-green-500  bg-gradient-to-b from-green-500 via-green-600 to-transparent rounded-md hover:shadow-sm cursor-pointer active:scale-95 transition-all">
             <img
+              src="./image/profile/DCA Logo.png"
+              alt=""
+              className="absolute group-hover:scale-110 transition-all contrast-100 brightness-100 z-40 bottom-0 shadow -right-20 max-w-[200px]"
+            />
+            <img
               src={image ? image : "https://via.placeholder.com/300"}
               alt=""
-              className=" md:max-w-[400px] w-full max-w-[300px] object-cover contrast-100 scale-100 transform-perserve-3d group-hover:parallax-image"
+              className=" md:max-w-[400px] w-full max-w-[300px] object-cover contrast-100 brightness-90 scale-100 transform-perserve-3d group-hover:parallax-image"
             />
           </div>
           <img

@@ -7,13 +7,13 @@ import { VelocityScroll } from "@/components/ui/scroll-based-velocity";
 export default function Footer({ sm }: { sm: SocialMedia[] }) {
   return (
     <div>
-      <VelocityScroll
+      {/* <VelocityScroll
         className="tracking-tighter text-white/15 p-5"
         defaultVelocity={1}
       >
         Interesed in working with me? Let's talk. If you have any questions or
         want to know more about me, feel free to contact me.
-      </VelocityScroll>
+      </VelocityScroll> */}
       <div className="text-center py-8 text-neutral-500 font-outfit space-y-5 pt-20 pb-20">
         <p>Build using Next.js and Tailwind CSS</p>
         <h2 className="text-2xl font-archiabold tracking-tighter">

@@ -5,10 +5,15 @@
     "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum, eum. Voluptatibus voluptas incidunt quod facilis inventore. Tempore, dolores dignissimos? Sit!",
     "thumbnail": ["eiger/cover.webp", "eiger/apps_1.webp", "eiger/apps_2.webp"],
     "slug": "eiger",
-    "repository": "",
-    "website": "",
+    "repository": "https://github.com",
+    "website": [
+      {
+        "appstore": "",
+        "googleplay": ""
+      }
+    ],
     "category": "Mobile",
-    "tag": ["flutter", "Android", "IOS"]
+    "tag": ["Flutter", "Android", "iOS"]
   },
   {
     "id": 2,
@@ -20,10 +25,15 @@
       "exploria_host/app_2.webp"
     ],
     "slug": "exploria-host",
-    "repository": "",
-    "website": "",
+    "repository": "https://github.com",
+    "website": [
+      {
+        "appstore": "",
+        "googleplay": ""
+      }
+    ],
     "category": "Mobile",
-    "tag": ["flutter", "Android", "IOS"]
+    "tag": ["Flutter", "Android", "iOS"]
   },
   {
     "id": 3,
@@ -31,10 +41,15 @@
     "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum, eum. Voluptatibus voluptas incidunt quod facilis inventore. Tempore, dolores dignissimos? Sit!",
     "thumbnail": ["imma/cover.webp", "imma/app_1.webp", "imma/app_2.webp"],
     "slug": "imma",
-    "repository": "",
-    "website": "",
+    "repository": "https://github.com",
+    "website": [
+      {
+        "appstore": "",
+        "googleplay": ""
+      }
+    ],
     "category": "Mobile",
-    "tag": ["flutter", "Android", "IOS"]
+    "tag": ["Flutter", "Android", "iOS"]
   },
   {
     "id": 4,
@@ -46,10 +61,15 @@
       "jelajahin/app_2.webp"
     ],
     "slug": "jelajahin",
-    "repository": "",
-    "website": "",
+    "repository": "https://github.com",
+    "website": [
+      {
+        "appstore": "https://appstore.com/",
+        "googleplay": "https://googleplay.com/"
+      }
+    ],
     "category": "Mobile",
-    "tag": ["flutter", "Android", "IOS"]
+    "tag": ["Flutter", "Android", "iOS"]
   },
   {
     "id": 5,
@@ -61,10 +81,15 @@
       "peduly/app_2.webp"
     ],
     "slug": "peduly",
-    "repository": "",
-    "website": "",
+    "repository": "https://github.com",
+    "website": [
+      {
+        "appstore": "",
+        "googleplay": ""
+      }
+    ],
     "category": "Mobile",
-    "tag": ["flutter", "Android", "IOS"]
+    "tag": ["Flutter", "Android", "iOS"]
   },
   {
     "id": 6,
@@ -72,10 +97,15 @@
     "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum, eum. Voluptatibus voluptas incidunt quod facilis inventore. Tempore, dolores dignissimos? Sit!",
     "thumbnail": ["pesat/cover.webp", "pesat/app_1.webp", "pesat/app_2.webp"],
     "slug": "pesat",
-    "repository": "",
-    "website": "",
+    "repository": "https://github.com",
+    "website": [
+      {
+        "appstore": "",
+        "googleplay": ""
+      }
+    ],
     "category": "Mobile",
-    "tag": ["flutter", "Android", "IOS"]
+    "tag": ["Flutter", "Android", "iOS"]
   },
   {
     "id": 7,
@@ -87,10 +117,15 @@
       "snapandcook/app_2.webp"
     ],
     "slug": "snapandcook",
-    "repository": "",
-    "website": "",
+    "repository": "https://github.com",
+    "website": [
+      {
+        "appstore": "",
+        "googleplay": ""
+      }
+    ],
     "category": "Mobile",
-    "tag": ["flutter", "Android", "IOS"]
+    "tag": ["Flutter", "Android", "iOS"]
   },
   {
     "id": 8,
@@ -102,9 +137,14 @@
       "sumbanginaja/app_2.webp"
     ],
     "slug": "sumbangin-aja",
-    "repository": "",
-    "website": "",
+    "repository": "https://github.com",
+    "website": [
+      {
+        "appstore": "",
+        "googleplay": ""
+      }
+    ],
     "category": "Mobile",
-    "tag": ["flutter", "Android", "IOS"]
+    "tag": ["Flutter", "Android", "iOS"]
   }
 ]

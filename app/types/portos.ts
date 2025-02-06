@@ -50,6 +50,7 @@ export type Experience = {
   position: string;
   type: string;
   description: string;
+  showMore: boolean;
 };
 
 export type Experiences = {
@@ -73,7 +74,7 @@ export type Projects = {
   thumbnail: string[];
   slug: string;
   repository?: string;
-  website?: string;
+  website?: string[];
   category?: string[];
   tag: string[];
 };

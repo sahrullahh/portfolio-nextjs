@@ -56,7 +56,7 @@ export default function card({
             tags.map((item: string, i: number) => (
               <span
                 key={i}
-                className="text-center px-3 py-1 bg-neutral-800 rounded-md"
+                className="text-center px-3 py-1  bg-neutral-800 rounded-md"
               >
                 {item}
               </span>

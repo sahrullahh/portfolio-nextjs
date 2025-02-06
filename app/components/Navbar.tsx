@@ -78,7 +78,7 @@ const Navbar: React.FC<Navbars> = ({ data, frontLogo, backLogo, title }) => {
                 </div>
               </div>
               <div className="head-title">
-                <strong className="text-2xl lg:block hidden">{title}</strong>
+                <strong className="lg:text-2xl text-lg">{title}</strong>
               </div>
             </div>
           </div>

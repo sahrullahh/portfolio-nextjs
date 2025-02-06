@@ -61,7 +61,6 @@ export default function index() {
               </div>
             </>
           )}
-          <div className="border-2 border-neutral-700 border-dashed"></div>
         </>
       </div>
     </div>

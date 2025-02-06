@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import { Experiences, Experience } from "@/app/types/portos";
+import ReadMoreText from "../ReadMore";
 
 export default function experiences({ data }: Experiences) {
   const [showMore, setShowMore] = useState(false);
@@ -52,9 +53,7 @@ export default function experiences({ data }: Experiences) {
                   {item.position} -{" "}
                   <span className="lowercase"> ({item.type})</span>
                 </h3>
-                <p className="mb-4 text-lg font-normal font-outfit text-col-secondary-font">
-                  {item.description}
-                </p>
+                <ReadMoreText text={item.description} />
               </li>
             ))}
             <li className="mb-10 ms-4 group">

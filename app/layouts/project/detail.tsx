@@ -3,7 +3,7 @@
 import React, { useRef, useEffect, useState, use } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
-import { NextSeo } from "next-seo";
+import Head from "next/head";
 
 import "swiper/css";
 import { Icon } from "@iconify/react";
@@ -38,15 +38,29 @@ export default function detail({ slug }: { slug: string }) {
   return (
     <>
       {data && (
-        <NextSeo
-          title={`${data.title} . Mohammad S`}
-          description={data.description || data.content.slice(0, 150)}
-          openGraph={{
-            title: data.title,
-            description: data.description || data.content.slice(0, 150),
-            type: "article",
-          }}
-        />
+        <Head>
+          <title>{data.title} . Ibnu Batutah</title>
+          <meta
+            name="description"
+            content={data.description}
+          />
+          <meta
+            name="robots"
+            content="index, follow"
+          />
+          <meta
+            property="og:title"
+            content={`${data.title} . Ibnu Batutah`}
+          />
+          <meta
+            property="og:description"
+            content={data.description}
+          />
+          <meta
+            property="og:type"
+            content="website"
+          />
+        </Head>
       )}
       <div className="space-y-8 pb-16 pt-10 container mx-auto">
         <div className="max-w-7xl mx-auto font-outfit">
@@ -57,28 +71,29 @@ export default function detail({ slug }: { slug: string }) {
             <Icon icon="ion:arrow-back" /> <span>Back to home </span>
           </Link>
         </div>
-        <div className="relative">
-          {data && data.thumbnail.length > 1 ? (
-            <button
-              ref={nextSlide}
-              className="px-4 py-4 bg-neutral-800 rounded-full font-outfit absolute right-0 top-80 text-2xl z-20"
-            >
-              <span>
-                <Icon icon="lucide:arrow-right" />
-              </span>
-            </button>
-          ) : null}
-          {data && data.thumbnail.length > 1 ? (
-            <button
-              ref={prevSlide}
-              className="px-4 py-4 bg-neutral-800 rounded-full font-outfit absolute left-0 top-80 text-2xl z-20"
-            >
-              <span>
-                <Icon icon="lucide:arrow-left" />
-              </span>
-            </button>
-          ) : null}
-
+        <div className="relative  ">
+          <div className="mt-8 relative">
+            {data && data.thumbnail.length > 1 ? (
+              <button
+                ref={nextSlide}
+                className="px-4 py-4 bg-neutral-800 rounded-full font-outfit absolute  lg:right-0 -right-5  lg:top-80 top-24 text-2xl z-20"
+              >
+                <span>
+                  <Icon icon="lucide:arrow-right" />
+                </span>
+              </button>
+            ) : null}
+            {data && data.thumbnail.length > 1 ? (
+              <button
+                ref={prevSlide}
+                className="px-4 py-4 bg-neutral-800 rounded-full font-outfit absolute lg:left-0 -left-5  lg:top-80 top-24 text-2xl z-20"
+              >
+                <span>
+                  <Icon icon="lucide:arrow-left" />
+                </span>
+              </button>
+            ) : null}
+          </div>
           <Swiper
             modules={[Navigation]}
             navigation={{
@@ -115,21 +130,50 @@ export default function detail({ slug }: { slug: string }) {
             <h2 className="text-4xl  font-archiabold tracking-tighter">
               {data?.title}
             </h2>
-            <div className="flex gap-5">
-              {data && data.website && (
-                <Link
-                  href={data.website}
-                  target="_blank"
-                  className="px-5 font-outfit py-2 flex gap-2 items-center bg-neutral-700 rounded-md text-white"
-                >
-                  <span> Visit site</span> <Icon icon="akar-icons:link-out" />
-                </Link>
+            <div className="flex  gap-5">
+              {data && data.website && data.website.length > 0 ? (
+                data.website.map((item: any, i: number) => (
+                  <React.Fragment key={i}>
+                    {item.appstore && (
+                      <Link
+                        key={`appstore-${i}`}
+                        href={item.appstore}
+                        target="_blank"
+                        className="px-5 lg:text-base text-sm font-outfit py-2 flex gap-2 items-center bg-neutral-700 rounded-md text-white"
+                      >
+                        <Icon
+                          icon="mdi:apple"
+                          className="text-lg"
+                        />
+                        <span>App Store</span>
+                      </Link>
+                    )}
+                    {item.googleplay && (
+                      <Link
+                        key={`googleplay-${i}`}
+                        href={item.googleplay}
+                        target="_blank"
+                        className="px-5 lg:text-base text-sm font-outfit py-2 flex gap-2 items-center bg-neutral-700 rounded-md text-white"
+                      >
+                        <Icon
+                          icon="mdi:google-play"
+                          className="text-lg"
+                        />
+                        <span>Google Play</span>
+                      </Link>
+                    )}
+                  </React.Fragment>
+                ))
+              ) : (
+                <span className="text-center font-outfit px-3 py-1 bg-neutral-800 rounded-md">
+                  No techonlogy used
+                </span>
               )}
               {data && data.repository && (
                 <Link
                   href={data.repository}
                   target="_blank"
-                  className="px-5 font-outfit py-2 flex gap-2 items-center bg-neutral-700 rounded-md text-white"
+                  className="px-5 lg:text-base text-sm font-outfit py-2 flex gap-2 items-center bg-neutral-700 rounded-md text-white"
                 >
                   Repository
                   <span>

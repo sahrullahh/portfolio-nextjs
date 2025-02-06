@@ -6,6 +6,16 @@ import Tools from "./layouts/home/tools";
 import Achievement from "./layouts/home/achievement";
 
 export default function page() {
+  const desc = `
+Passionate mobile developer with 4+ years of experience building high-performance Android and iOS apps using Kotlin, Java, and Flutter. Some of my apps have earned **4.8-star ratings** and ranked in the **top 50** in shopping categories.
+
+Beyond mobile, I have experience with **NestJS** and **Golang** for backend development and have integrated machine learning models (**TensorFlow & Keras**) into apps to enhance functionality.
+
+I’ve also **led and mentored teams**, focusing on clean code and maintainable codebases.
+
+I thrive in dynamic environments, solving complex challenges, and pushing the boundaries of technology. **Excited to contribute to innovative projects!**
+`;
+
   return (
     <div className="container mx-auto flex flex-col gap-20">
       <Home
@@ -34,7 +44,7 @@ export default function page() {
           },
         ]}
       />
-      <About />
+      <About desc={desc} />
       <Summaries />
       <Featured />
       <Achievement />

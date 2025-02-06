@@ -5,7 +5,7 @@ import fetch from "@/app/utils/axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
- 
+
 export default function Achievement() {
   const [certif, setCertif] = useState([]);
   const [awards, setAwards] = useState([]);
@@ -39,19 +39,19 @@ export default function Achievement() {
     certif?.length > 4
       ? "flex"
       : certif?.length > 3
-      ? "flex"
+      ? "hidden"
       : certif?.length > 1
-      ? "flex"
-      : "hidden";
+      ? "hidden"
+      : "flex";
 
   const showAwardBtn =
-    certif?.length > 4
+    awards?.length > 4
       ? "flex"
-      : certif?.length > 3
-      ? "flex"
-      : certif?.length > 1
-      ? "flex"
-      : "hidden";
+      : awards?.length > 3
+      ? "hidden"
+      : awards?.length > 1
+      ? "hidden"
+      : "flex";
 
   const buttonTabs = (tab: number) => {
     setTab(tab);
@@ -146,7 +146,10 @@ export default function Achievement() {
           )}
 
           <div className={`${showCertifBtn} justify-center gap-5 relative`}>
-            <button className="px-5 py-3 bg-neutral-800 font-outfit text-2xl hover:bg-neutral-700 text-neutral-300 rounded-md font-bold">
+            <button
+              ref={prevCertifRef}
+              className="px-5 py-3 bg-neutral-800 font-outfit text-2xl hover:bg-neutral-700 text-neutral-300 rounded-md font-bold"
+            >
               <span>
                 <Icon icon="lucide:arrow-left" />
               </span>
@@ -186,11 +189,8 @@ export default function Achievement() {
               }}
             >
               {awards.map((item: any, i: number) => (
-                <SwiperSlide>
-                  <div
-                    className="group relative lg:max-w-[300px] w-ful cursor-pointer"
-                    key={i}
-                  >
+                <SwiperSlide key={`awards-${i}`}>
+                  <div className="group relative lg:max-w-[300px] w-ful cursor-pointer">
                     <div className="relative overflow-hidden ">
                       <img
                         className="w-full transform group-hover:scale-110 transition-all  duration-500 "
