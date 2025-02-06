@@ -75,7 +75,7 @@ export type Projects = {
   slug: string;
   repository?: string;
   website?: string[];
-  category?: string[];
+  category?: string;
   tag: string[];
 };
 

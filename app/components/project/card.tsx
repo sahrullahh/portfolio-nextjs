@@ -50,8 +50,8 @@ export default function card({
         <div className="p-3">
           <h2 className="font-archiabold tracking-tighter">{title}</h2>
         </div>
-        <div className="flex pb-3  gap-2 font-outfit ">
-          <span className="text-neutral-300">{category}</span>
+        <div className="flex pb-3 pl-3 gap-2 font-outfit ">
+          {/* <span className="text-neutral-300">{category}</span> */}
           {tags && tags.length > 0 ? (
             tags.map((item: string, i: number) => (
               <span
