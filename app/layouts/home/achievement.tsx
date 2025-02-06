@@ -16,6 +16,13 @@ export default function Achievement() {
   const prevAwardRef = useRef(null);
   const nextAwardRef = useRef(null);
 
+  const [showModal, setShowModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<any>(null);
+
+  const handleImageClick = (item: any) => {
+    setSelectedItem(item);
+    setShowModal(true);
+  };
   const fetchData = async () => {
     try {
       const res = await fetch.get("certificates.json");
@@ -60,6 +67,43 @@ export default function Achievement() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const Modal = () => {
+    if (!showModal) return null;
+    return (
+      <div className="fixed inset-0 backdrop-filter backdrop-blur-sm bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 animate-fadeIn">
+        <div className="bg-neutral-900 p-6 rounded-lg max-w-7xl w-full">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-xl font-archiabold  border-col-primary-font">
+              {selectedItem?.title}
+            </h3>
+            <button
+              onClick={() => setShowModal(false)}
+              className="p-2 hover:bg-neutral-800 rounded-full"
+            >
+              <Icon icon="lucide:x" />
+            </button>
+          </div>
+          <div className="grid grid-cols-1 justify-center  gap-6">
+            <div>
+              <img
+                src={`./image/${
+                  selectedItem?.category === "certif"
+                    ? "certifications"
+                    : "awards"
+                }/${selectedItem?.image}`}
+                alt={selectedItem?.title}
+                className="w-full rounded-lg"
+              />
+            </div>
+            <div className="flex flex-row justify-start">
+              <p className="text-col-white">{selectedItem?.description}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="space-y-8 pb-16">
@@ -117,7 +161,10 @@ export default function Achievement() {
               {certif.map((item: any, i: number) => (
                 <SwiperSlide key={`certif-${i}`}>
                   <div className="group relative lg:max-w-[300px] w-full cursor-pointer">
-                    <div className="relative overflow-hidden ">
+                    <div
+                      className="relative overflow-hidden"
+                      onClick={() => handleImageClick(item)}
+                    >
                       <img
                         className="w-full transform group-hover:scale-110 transition-all duration-500 "
                         src={"./image/certifications/" + item.image}
@@ -191,7 +238,10 @@ export default function Achievement() {
               {awards.map((item: any, i: number) => (
                 <SwiperSlide key={`awards-${i}`}>
                   <div className="group relative lg:max-w-[300px] w-ful cursor-pointer">
-                    <div className="relative overflow-hidden ">
+                    <div
+                      className="relative overflow-hidden"
+                      onClick={() => handleImageClick(item)}
+                    >
                       <img
                         className="w-full transform group-hover:scale-110 transition-all  duration-500 "
                         src={"./image/awards/" + item.image}
@@ -237,6 +287,7 @@ export default function Achievement() {
           </div>
         </>
       )}
+      <Modal />
     </div>
   );
 }
